@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Color Swatches Demo</title>
+<style>
+:root {
+  /* Reds */
+  --red-dark: #ae2d24;   /* Dark red / brick red */
+  --red-classic: #c23324; /* Classic red */
+  --red-bright: #ee3732;  /* Bright red */
+  --red-vivid: #f53b3a;   /* Vivid red / scarlet */
+
+  /* Oranges */
+  --orange-deep: #ff8524;   /* Deep orange */
+  --orange-classic: #ff992b; /* Classic orange */
+  --orange-gold: #feb448;    /* Golden orange */
+  --orange-yellow: #ffc718;  /* Yellow-orange / amber */
+
+  /* Yellows */
+  --yellow-soft: #ffff75;  /* Soft pastel yellow */
+  --yellow-bright: #ffff8d; /* Bright lemon yellow */
+
+  /* Greens */
+  --green-forest: #42704d; /* Forest green */
+  --green-sea: #2d7a5e;    /* Sea green */
+  --green-sage: #387d5c;   /* Sage green */
+  --green-fresh: #349159;  /* Fresh leaf green */
+
+  /* Neutrals / Lights */
+  --brown-dark: #2d211d;   /* Dark brown */
+  --cream-light: #ffffd6;  /* Light cream */
+  --white-warm: #fffff2;   /* Warm white */
+  --white-pure: #ffffff;   /* Pure white */
+
+  /* Earth Tones (new) */
+  --earth-terracotta: #c88467; /* Terracotta */
+  --earth-mustard: #e1ad5e;    /* Mustard gold */
+  --earth-sand: #eab773;       /* Sand */
+  --earth-peach: #ffcf94;      /* Peach cream */
+  --earth-salmon: #f39d7f;     /* Soft salmon */
+  --earth-coral: #fbb291;      /* Coral peach */
+  --earth-apricot: #ed9a78;    /* Apricot */
+
+  /* Teals (new) */
+  --teal-moss: #9cbaa9;  /* Moss green */
+  --teal-seafoam: #8eb9b0; /* Seafoam teal */
+  --teal-mist: #a9c2b6;  /* Mist green */
+  --teal-soft: #96c3bd;  /* Soft teal */
+}
+
+body {
+  font-family: sans-serif;
+  background: #f5f5f5;
+  padding: 2rem;
+}
+
+.group {
+  margin-bottom: 2rem;
+}
+
+.group h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+}
+
+.swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.swatch {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  overflow: hidden;
+  background: white;
+  width: 160px;
+}
+
+.color-box {
+  height: 80px;
+}
+
+.label {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h1>Color Swatches</h1>
+
+<div class="group">
+  <h2>Reds</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="color-box" style="background: var(--red-dark)"></div><div class="label">Dark Red (#ae2d24)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--red-classic)"></div><div class="label">Classic Red (#c23324)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--red-bright)"></div><div class="label">Bright Red (#ee3732)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--red-vivid)"></div><div class="label">Vivid Red (#f53b3a)</div></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Oranges</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="color-box" style="background: var(--orange-deep)"></div><div class="label">Deep Orange (#ff8524)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--orange-classic)"></div><div class="label">Classic Orange (#ff992b)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--orange-gold)"></div><div class="label">Golden Orange (#feb448)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--orange-yellow)"></div><div class="label">Amber (#ffc718)</div></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Yellows</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="color-box" style="background: var(--yellow-soft)"></div><div class="label">Soft Yellow (#ffff75)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--yellow-bright)"></div><div class="label">Bright Yellow (#ffff8d)</div></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Greens</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="color-box" style="background: var(--green-forest)"></div><div class="label">Forest Green (#42704d)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--green-sea)"></div><div class="label">Sea Green (#2d7a5e)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--green-sage)"></div><div class="label">Sage Green (#387d5c)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--green-fresh)"></div><div class="label">Fresh Green (#349159)</div></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Earth Tones</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="color-box" style="background: var(--earth-terracotta)"></div><div class="label">Terracotta (#c88467)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--earth-mustard)"></div><div class="label">Mustard Gold (#e1ad5e)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--earth-sand)"></div><div class="label">Sand (#eab773)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--earth-peach)"></div><div class="label">Peach Cream (#ffcf94)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--earth-salmon)"></div><div class="label">Soft Salmon (#f39d7f)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--earth-coral)"></div><div class="label">Coral Peach (#fbb291)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--earth-apricot)"></div><div class="label">Apricot (#ed9a78)</div></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Teals</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="color-box" style="background: var(--teal-moss)"></div><div class="label">Moss Green (#9cbaa9)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--teal-seafoam)"></div><div class="label">Seafoam Teal (#8eb9b0)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--teal-mist)"></div><div class="label">Mist Green (#a9c2b6)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--teal-soft)"></div><div class="label">Soft Teal (#96c3bd)</div></div>
+  </div>
+</div>
+
+<div class="group">
+  <h2>Neutrals / Lights</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="color-box" style="background: var(--brown-dark)"></div><div class="label">Dark Brown (#2d211d)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--cream-light)"></div><div class="label">Light Cream (#ffffd6)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--white-warm)"></div><div class="label">Warm White (#fffff2)</div></div>
+    <div class="swatch"><div class="color-box" style="background: var(--white-pure)"></div><div class="label">Pure White (#ffffff)</div></div>
+  </div>
+</div>
+
+</body>
+</html>
