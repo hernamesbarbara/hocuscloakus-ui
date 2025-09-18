@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Container, Grid, Typography, Paper, Box } from '@mui/material'
+import { Typography, Paper, Box } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import JsonView from '@uiw/react-json-view'
+// Using simple JSON display for performance
 import './App.css'
 
 const theme = createTheme({
@@ -31,7 +31,17 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="xl" sx={{ py: 2 }}>
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        p: 1,
+        m: 0,
+        boxSizing: 'border-box',
+        overflow: 'hidden'
+      }}>
         <Typography variant="h4" component="h1" gutterBottom textAlign="center">
           HocusCloakus UI
         </Typography>
@@ -39,52 +49,48 @@ function App() {
           Dual-pane JSON viewer for Docling document comparison
         </Typography>
 
-        <Box sx={{ mt: 3 }}>
-          <Grid container spacing={2} sx={{ height: 'calc(100vh - 200px)' }}>
-            <Grid item xs={12} md={6}>
-              <Paper elevation={2} sx={{ height: '100%', p: 2 }}>
-                <Typography variant="h6" gutterBottom>
-                  Original Docling JSON
-                </Typography>
-                <Box sx={{ height: 'calc(100% - 40px)', overflow: 'auto' }}>
-                  <JsonView
-                    value={leftContent}
-                    style={{
-                      backgroundColor: '#fafafa',
-                      fontSize: '12px',
-                    }}
-                    displayDataTypes={false}
-                    displayObjectSize={false}
-                    enableClipboard={true}
-                    collapsed={2}
-                  />
-                </Box>
-              </Paper>
-            </Grid>
+        <Box sx={{ display: 'flex', gap: 1, height: 'calc(100vh - 120px)', mt: 1 }}>
+          <Paper elevation={2} sx={{ flex: 1, p: 1, minWidth: 0 }}>
+            <Typography variant="h6" gutterBottom>
+              Original Docling JSON
+            </Typography>
+            <Box sx={{ height: 'calc(100% - 35px)', overflow: 'auto' }}>
+              <pre style={{
+                margin: 0,
+                padding: '8px',
+                backgroundColor: '#fafafa',
+                fontSize: '12px',
+                fontFamily: '"Roboto Mono", Monaco, Consolas, monospace',
+                lineHeight: 1.4,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word'
+              }}>
+                {JSON.stringify(leftContent, null, 2)}
+              </pre>
+            </Box>
+          </Paper>
 
-            <Grid item xs={12} md={6}>
-              <Paper elevation={2} sx={{ height: '100%', p: 2 }}>
-                <Typography variant="h6" gutterBottom>
-                  Masked Docling JSON
-                </Typography>
-                <Box sx={{ height: 'calc(100% - 40px)', overflow: 'auto' }}>
-                  <JsonView
-                    value={rightContent}
-                    style={{
-                      backgroundColor: '#fafafa',
-                      fontSize: '12px',
-                    }}
-                    displayDataTypes={false}
-                    displayObjectSize={false}
-                    enableClipboard={true}
-                    collapsed={2}
-                  />
-                </Box>
-              </Paper>
-            </Grid>
-          </Grid>
+          <Paper elevation={2} sx={{ flex: 1, p: 1, minWidth: 0 }}>
+            <Typography variant="h6" gutterBottom>
+              Masked Docling JSON
+            </Typography>
+            <Box sx={{ height: 'calc(100% - 35px)', overflow: 'auto' }}>
+              <pre style={{
+                margin: 0,
+                padding: '8px',
+                backgroundColor: '#fafafa',
+                fontSize: '12px',
+                fontFamily: '"Roboto Mono", Monaco, Consolas, monospace',
+                lineHeight: 1.4,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word'
+              }}>
+                {JSON.stringify(rightContent, null, 2)}
+              </pre>
+            </Box>
+          </Paper>
         </Box>
-      </Container>
+      </Box>
     </ThemeProvider>
   )
 }

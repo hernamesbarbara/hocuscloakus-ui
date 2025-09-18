@@ -1,5 +1,12 @@
 /* Custom styles for HocusCloakus UI - JSON View */
 
+/* Reset body and root margins/padding */
+body, #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+}
+
 .w-json-view-container {
   font-family: 'Roboto Mono', 'Monaco', 'Consolas', monospace !important;
   line-height: 1.4;
