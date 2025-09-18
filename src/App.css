@@ -1,0 +1,22 @@
+/* Custom styles for HocusCloakus UI */
+
+.w-md-editor {
+  background-color: #fff;
+}
+
+.w-md-editor-text-container,
+.w-md-editor-text,
+.w-md-editor-text-input {
+  font-family: 'Roboto Mono', 'Monaco', 'Consolas', monospace !important;
+  font-size: 14px !important;
+}
+
+.w-md-editor-text-input {
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 4px !important;
+}
+
+.w-md-editor-text-input:focus {
+  border-color: #1976d2 !important;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2) !important;
+}
