@@ -1,22 +1,38 @@
-/* Custom styles for HocusCloakus UI */
+/* Custom styles for HocusCloakus UI - JSON View */
 
-.w-md-editor {
-  background-color: #fff;
-}
-
-.w-md-editor-text-container,
-.w-md-editor-text,
-.w-md-editor-text-input {
+.w-json-view-container {
   font-family: 'Roboto Mono', 'Monaco', 'Consolas', monospace !important;
-  font-size: 14px !important;
+  line-height: 1.4;
 }
 
-.w-md-editor-text-input {
-  border: 1px solid #e0e0e0 !important;
-  border-radius: 4px !important;
+.w-json-view-container .w-json-view-copy {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 11px;
 }
 
-.w-md-editor-text-input:focus {
-  border-color: #1976d2 !important;
-  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2) !important;
+.w-json-view-container .w-json-view-copy:hover {
+  background-color: #1565c0;
+}
+
+/* Custom scrollbar styling */
+.MuiBox-root::-webkit-scrollbar {
+  width: 8px;
+}
+
+.MuiBox-root::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.MuiBox-root::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.MuiBox-root::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
 }
