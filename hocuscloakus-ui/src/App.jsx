@@ -1,180 +1,77 @@
 import SplitDiffView from "./components/SplitDiffView";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function App() {
   const [selectedFiles, setSelectedFiles] = useState("markdown");
+  const [markdownFiles, setMarkdownFiles] = useState(null);
+  const [jsonFiles, setJsonFiles] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Sample markdown files
-  const markdownFiles = {
-    original: {
-      name: "README.md",
-      type: "markdown",
-      content: `# Project Title
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
 
-A brief description of what this project does and who it's for.
+        // Load all files in parallel
+        const [mdOriginal, mdMasked, jsonOriginal, jsonMasked] = await Promise.all([
+          fetch('/data/md/email.original.md').then(r => r.text()),
+          fetch('/data/md/email.masked.md').then(r => r.text()),
+          fetch('/data/json/email.original.json').then(r => r.text()),
+          fetch('/data/json/email.masked.json').then(r => r.text()),
+        ]);
 
-## Installation
-
-\`\`\`bash
-npm install my-project
-cd my-project
-npm start
-\`\`\`
-
-## Features
-
-- **Fast**: Built with performance in mind
-- **Flexible**: Easily customizable
-- **Modern**: Uses latest technologies
-
-## API Reference
-
-### \`getData()\`
-
-Returns the current data state.
-
-\`\`\`javascript
-const data = await getData();
-console.log(data);
-\`\`\`
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)`,
-    },
-    masked: {
-      name: "README.md (masked)",
-      type: "markdown",
-      content: `# [REDACTED]
-
-A brief description of what this project does and who it's for.
-
-## Installation
-
-\`\`\`bash
-npm install [PACKAGE_NAME]
-cd [PACKAGE_NAME]
-npm start
-\`\`\`
-
-## Features
-
-- **Fast**: Built with performance in mind
-- **Flexible**: Easily customizable
-- **Modern**: Uses latest technologies
-
-## API Reference
-
-### \`[FUNCTION_NAME]()\`
-
-Returns the [REDACTED] data state.
-
-\`\`\`javascript
-const data = await [FUNCTION_NAME]();
-console.log(data);
-\`\`\`
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first.
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)`,
-    },
-  };
-
-  // Sample JSON files
-  const jsonFiles = {
-    original: {
-      name: "config.json",
-      type: "json",
-      content: JSON.stringify(
-        {
-          name: "my-awesome-app",
-          version: "1.2.3",
-          description: "A production-ready application",
-          main: "index.js",
-          scripts: {
-            start: "node index.js",
-            dev: "nodemon index.js",
-            test: "jest",
-            build: "webpack --mode production",
+        setMarkdownFiles({
+          original: {
+            name: "email.original.md",
+            type: "markdown",
+            content: mdOriginal
           },
-          dependencies: {
-            express: "^4.18.2",
-            mongoose: "^7.5.0",
-            jsonwebtoken: "^9.0.2",
-            bcrypt: "^5.1.0",
+          masked: {
+            name: "email.masked.md",
+            type: "markdown",
+            content: mdMasked
+          }
+        });
+
+        setJsonFiles({
+          original: {
+            name: "email.original.json",
+            type: "json",
+            content: jsonOriginal
           },
-          devDependencies: {
-            nodemon: "^3.0.1",
-            jest: "^29.6.4",
-            webpack: "^5.88.2",
-          },
-          repository: {
-            type: "git",
-            url: "https://github.com/user/my-awesome-app.git",
-          },
-          author: "John Doe <john@example.com>",
-          license: "MIT",
-          keywords: ["node", "express", "api", "production"],
-          engines: {
-            node: ">=16.0.0",
-            npm: ">=8.0.0",
-          },
-        },
-        null,
-        2,
-      ),
-    },
-    masked: {
-      name: "config.json (masked)",
-      type: "json",
-      content: JSON.stringify(
-        {
-          name: "[REDACTED]",
-          version: "1.2.3",
-          description: "[REDACTED]",
-          main: "index.js",
-          scripts: {
-            start: "node index.js",
-            dev: "nodemon index.js",
-            test: "jest",
-            build: "webpack --mode production",
-          },
-          dependencies: {
-            express: "^4.18.2",
-            mongoose: "^7.5.0",
-            jsonwebtoken: "^9.0.2",
-            bcrypt: "^5.1.0",
-          },
-          devDependencies: {
-            nodemon: "^3.0.1",
-            jest: "^29.6.4",
-            webpack: "^5.88.2",
-          },
-          repository: {
-            type: "git",
-            url: "[REDACTED]",
-          },
-          author: "[REDACTED]",
-          license: "MIT",
-          keywords: ["node", "express", "api", "production"],
-          engines: {
-            node: ">=16.0.0",
-            npm: ">=8.0.0",
-          },
-        },
-        null,
-        2,
-      ),
-    },
-  };
+          masked: {
+            name: "email.masked.json",
+            type: "json",
+            content: jsonMasked
+          }
+        });
+
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []); // Load once on mount
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#F3F3F3] dark:bg-[#0A0A0A] flex items-center justify-center">
+        <div className="text-black dark:text-white">Loading sample data...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#F3F3F3] dark:bg-[#0A0A0A] flex items-center justify-center">
+        <div className="text-red-500">Error loading data: {error}</div>
+      </div>
+    );
+  }
 
   const currentFiles = selectedFiles === "markdown" ? markdownFiles : jsonFiles;
 
