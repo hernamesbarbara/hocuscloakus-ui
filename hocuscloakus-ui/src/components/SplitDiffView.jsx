@@ -20,21 +20,19 @@ export default function SplitDiffView({ originalFile, maskedFile }) {
     try {
       const parsed = JSON.parse(content);
       const formatted = JSON.stringify(parsed, null, 2);
-      
+
       return (
-        <pre className="font-jetbrains text-sm text-[#2B2B2B] dark:text-[#E5E5E5] whitespace-pre-wrap break-words">
-          <code dangerouslySetInnerHTML={{
-            __html: formatted
-              .replace(/(".*?")/g, '<span style="color: #22C55E;">$1</span>')
-              .replace(/(\d+\.?\d*)/g, '<span style="color: #3B82F6;">$1</span>')
-              .replace(/(true|false|null)/g, '<span style="color: #F59E0B;">$1</span>')
-              .replace(/([{}[\],])/g, '<span style="color: #6B7280;">$1</span>')
-          }} />
+        <pre className="font-jetbrains text-sm whitespace-pre-wrap break-words overflow-x-auto bg-[#F8F9FA] dark:bg-[#1F2937] p-4 rounded-lg">
+          <code className="text-[#2B2B2B] dark:text-[#E5E5E5]">
+            {formatted}
+          </code>
         </pre>
       );
     } catch (e) {
       return (
-        <pre className="font-jetbrains text-sm text-[#2B2B2B] dark:text-[#E5E5E5] whitespace-pre-wrap break-words">
+        <pre className="font-jetbrains text-sm text-red-500 whitespace-pre-wrap break-words">
+          Error parsing JSON: {e.message}
+          {'\n\n'}
           {content}
         </pre>
       );
