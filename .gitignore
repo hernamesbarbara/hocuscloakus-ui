@@ -39,3 +39,5 @@ Thumbs.db
 *.code-workspace.swissarmyhammer/
 createxyz-project.zip
 createxyz-project
+side-by-side-viewer/
+tmp/
