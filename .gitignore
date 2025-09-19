@@ -4,10 +4,17 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
 # Build outputs
 dist/
+dist-ssr/
 build/
+*.local
+
+# Logs
+logs/
+*.log
 
 # Environment variables
 .env
@@ -17,11 +24,17 @@ build/
 .env.production.local
 
 # IDE/Editor files
-.vscode/
+.vscode/*
+!.vscode/extensions.json
 .idea/
 *.swp
 *.swo
+*.sw?
 *~
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
 # OS generated files
 .DS_Store
@@ -35,8 +48,15 @@ Thumbs.db
 # Vite
 .vite/
 
-# Code workspace settings
-*.code-workspace.swissarmyhammer/
+# Vite app specific
+hocuscloakus-ui/node_modules/
+hocuscloakus-ui/dist/
+hocuscloakus-ui/dist-ssr/
+hocuscloakus-ui/*.local
+
+# Project specific
+*.code-workspace
+.swissarmyhammer/
 createxyz-project.zip
 createxyz-project
 side-by-side-viewer/
